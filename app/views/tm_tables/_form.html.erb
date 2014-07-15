@@ -1,4 +1,4 @@
-<%= form_for(@tm_table) do |f| %>
+<%= form_for(@tm_table, :html => {:class => "form-horizontal",:role=>"form"}) do |f| %>
   <% if @tm_table.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tm_table.errors.count, "error") %> prohibited this tm_table from being saved:</h2>
@@ -21,7 +21,7 @@
           <th><%= f.label :note %></th>
       </tr>
       <tr>
-        <td><div class="field"><%= f.text_field :project_name %></div></td>
+        <td><div class="field form-group"><%= f.text_field :project_name %></div></td>
         <td><div class="field"><%= f.text_field :table_name %></div></td>
         <td><div class="field"><%= f.text_field :table_name_jp %></div></td>
         <td><div class="field"><%= f.text_field :revision_number %></div></td>
@@ -56,12 +56,12 @@
       </tr>
     </tbody>
   </table>
-  <input value="↑" type="button" class="upList" />
-  <input value="↓" type="button" class="downList" />
-  <%= button_tag_add_fields "+", f, :tm_table_columns %>
-  <input value="-" type="button" class="removeList" />
+  <input value="↑" type="button" class="upList btn btn-default" />
+  <input value="↓" type="button" class="downList btn btn-default" />
+  <%= button_tag_add_fields "+", f, "addList btn btn-default" ,:tm_table_columns %>
+  <input value="-" type="button" class="removeList btn btn-default" />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default'%>
   </div>
 
 <% end %>

@@ -52,7 +52,7 @@ jQuery ->
 
   #行上移動
   $(document)
-    .on "click",".upList" ,  ->
+    .on "click",".upList" ,   (event)->
       #未選択はエラー
       if $('.selected').length == 0
         alert "明細が未選択です。"
@@ -61,14 +61,15 @@ jQuery ->
       if $('.selected').length > 2
         alert "複数選択での操作は行えません。"
         return
+      console.log($('.selected').length)
       #行の上移動
-      work_tr = $('.selected')
-      $(work_tr).insertBefore($(work_tr).prev("tr").prev("tr")[0])
+      $('.selected').insertBefore($('.selected').prev())
       $.update_index()  #index編集
+      event.preventDefault()
 
   #行下移動
   $(document)
-    .on "click",".downList" ,  ->
+    .on "click",".downList" ,   (event)->
       #未選択はエラー
       if $('.selected').length == 0
         alert "明細が未選択です。"
@@ -77,17 +78,18 @@ jQuery ->
       if $('.selected').length > 2
         alert "複数選択での操作は行えません。"
         return
+      console.log($('.selected').length)
       #行の下移動
-      work_tr = $('.selected')
-      $(work_tr).insertAfter($(work_tr).next("tr").next("tr")[1])
+      $('.selected').insertAfter($('.selected').next())
       $.update_index()  #index編集
+      event.preventDefault()
 
 
-  #貸付明細のindexを編集
+  #明細のindexを編集
   $.update_index = () ->
     display_idx = 0
-    $('#R0541AB0702>tbody>tr').each (idx) ->
-      #偶数行のみ処置（0から始まる）
-      if idx % 2 == 0
-        display_idx += 1
-        $(this).find("#td-idx").html(display_idx)
+    #console.log($('.detail'))
+    $('.detail').each (idx) ->
+      display_idx += 1
+      #console.log($(this).find('.detail_no').children().val())
+      $(this).find('.detail_no').children().val(display_idx)

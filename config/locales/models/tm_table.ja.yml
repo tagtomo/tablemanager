@@ -1,0 +1,16 @@
+# モデル名
+ja:
+  activerecord:
+    models:
+      tm_table: 製品
+
+# モデルの属性名
+ja:
+  activerecord:
+    attributes:
+      tm_table:
+        project_name: ＰＪ名
+        table_name: テーブル名
+        table_name_jp: 日本語テーブル名
+        revision_number: リビジョン
+        note: 備考

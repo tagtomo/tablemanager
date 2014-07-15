@@ -1,6 +1,11 @@
 <fieldset class="detail">
   <table>
-    <td><%= f.number_field :column_number %></td>
+    <td><%= f.hidden_field :id %></td>
+    <td>
+      <div class="detail_no">
+        <%= f.number_field :column_number ,disabled: "true" %>
+      </div>
+    </td>
     <td><%= f.text_field :column_name %></td>
     <td><%= f.text_field :column_name_jp %></td>
     <td><%= f.text_field :column_type %></td>

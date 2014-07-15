@@ -1,5 +1,5 @@
 class TmTable < ActiveRecord::Base
-  has_many :tm_table_columns
+  has_many :tm_table_columns,->{order("column_number ASC") }
   accepts_nested_attributes_for :tm_table_columns , allow_destroy: true
 
   def to_gentext
