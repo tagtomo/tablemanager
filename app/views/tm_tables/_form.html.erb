@@ -1,0 +1,67 @@
+<%= form_for(@tm_table) do |f| %>
+  <% if @tm_table.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tm_table.errors.count, "error") %> prohibited this tm_table from being saved:</h2>
+
+      <ul>
+      <% @tm_table.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <thead>
+      <tr>
+          <th><%= f.label :project_name %></th>
+          <th><%= f.label :table_name %></th>
+          <th><%= f.label :table_name_jp %></th>
+          <th><%= f.label :revision_number %></th>
+          <th><%= f.label :note %></th>
+      </tr>
+      <tr>
+        <td><div class="field"><%= f.text_field :project_name %></div></td>
+        <td><div class="field"><%= f.text_field :table_name %></div></td>
+        <td><div class="field"><%= f.text_field :table_name_jp %></div></td>
+        <td><div class="field"><%= f.text_field :revision_number %></div></td>
+        <td><div class="field"><%= f.text_area :note %></div></td>
+      </tr>
+    </thead>
+    <tbody> 
+      <tr>
+        <td  colspan=5>
+          <fieldset class="detail_label">
+            <table>
+              <td><%= f.label :column_number %></td>
+              <td><%= f.label :column_name %></td>
+              <td><%= f.label :column_name_jp %></td>
+              <td><%= f.label :column_type %></td>
+              <td><%= f.label :column_size %></td>
+              <td><%= f.label :column_null %></td>
+              <td><%= f.label :column_default %></td>
+              <td><%= f.label :column_p_key %></td>
+              <td><%= f.label :column_f_key %></td>
+              <td><%= f.label :note %></td>
+            </table>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <td  colspan=5>
+          <%= f.fields_for :tm_table_columns do |det| %>
+            <%= render "tm_table_column_fields", f: det %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <input value="↑" type="button" class="upList" />
+  <input value="↓" type="button" class="downList" />
+  <%= button_tag_add_fields "+", f, :tm_table_columns %>
+  <input value="-" type="button" class="removeList" />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

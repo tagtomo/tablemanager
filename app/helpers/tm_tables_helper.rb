@@ -1,0 +1,2 @@
+module TmTablesHelper
+end

@@ -1,0 +1,45 @@
+<h1>Listing tm_table_columns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column number</th>
+      <th>Column name</th>
+      <th>Column name jp</th>
+      <th>Column type</th>
+      <th>Column size</th>
+      <th>Column null</th>
+      <th>Column default</th>
+      <th>Column p key</th>
+      <th>Column f key</th>
+      <th>Note</th>
+      <th>Tm table</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tm_table_columns.each do |tm_table_column| %>
+      <tr>
+        <td><%= tm_table_column.column_number %></td>
+        <td><%= tm_table_column.column_name %></td>
+        <td><%= tm_table_column.column_name_jp %></td>
+        <td><%= tm_table_column.column_type %></td>
+        <td><%= tm_table_column.column_size %></td>
+        <td><%= tm_table_column.column_null %></td>
+        <td><%= tm_table_column.column_default %></td>
+        <td><%= tm_table_column.column_p_key %></td>
+        <td><%= tm_table_column.column_f_key %></td>
+        <td><%= tm_table_column.note %></td>
+        <td><%= tm_table_column.tm_table_id %></td>
+        <td><%= link_to 'Show', tm_table_column %></td>
+        <td><%= link_to 'Edit', edit_tm_table_column_path(tm_table_column) %></td>
+        <td><%= link_to 'Destroy', tm_table_column, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tm table column', new_tm_table_column_path %>

@@ -1,0 +1,33 @@
+<h1>Listing tm_tables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project name</th>
+      <th>Table name</th>
+      <th>Table name jp</th>
+      <th>Revision number</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tm_tables.each do |tm_table| %>
+      <tr>
+        <td><%= tm_table.project_name %></td>
+        <td><%= tm_table.table_name %></td>
+        <td><%= tm_table.table_name_jp %></td>
+        <td><%= tm_table.revision_number %></td>
+        <td><%= tm_table.note %></td>
+        <td><%= link_to 'Show', tm_table %></td>
+        <td><%= link_to 'Edit', edit_tm_table_path(tm_table) %></td>
+        <td><%= link_to 'Destroy', tm_table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tm table', new_tm_table_path %>

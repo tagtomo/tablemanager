@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Column number:</strong>
+  <%= @tm_table_column.column_number %>
+</p>
+
+<p>
+  <strong>Column name:</strong>
+  <%= @tm_table_column.column_name %>
+</p>
+
+<p>
+  <strong>Column name jp:</strong>
+  <%= @tm_table_column.column_name_jp %>
+</p>
+
+<p>
+  <strong>Column type:</strong>
+  <%= @tm_table_column.column_type %>
+</p>
+
+<p>
+  <strong>Column size:</strong>
+  <%= @tm_table_column.column_size %>
+</p>
+
+<p>
+  <strong>Column null:</strong>
+  <%= @tm_table_column.column_null %>
+</p>
+
+<p>
+  <strong>Column default:</strong>
+  <%= @tm_table_column.column_default %>
+</p>
+
+<p>
+  <strong>Column p key:</strong>
+  <%= @tm_table_column.column_p_key %>
+</p>
+
+<p>
+  <strong>Column f key:</strong>
+  <%= @tm_table_column.column_f_key %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @tm_table_column.note %>
+</p>
+
+<p>
+  <strong>Tm table:</strong>
+  <%= @tm_table_column.tm_table_id %>
+</p>
+
+<%= link_to 'Edit', edit_tm_table_column_path(@tm_table_column) %> |
+<%= link_to 'Back', tm_table_columns_path %>

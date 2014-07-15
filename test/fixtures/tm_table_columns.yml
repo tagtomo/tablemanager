@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  column_number: 1
+  column_name: MyString
+  column_name_jp: MyString
+  column_type: MyString
+  column_size: MyString
+  column_null: false
+  column_default: MyString
+  column_p_key: false
+  column_f_key: false
+  note: MyText
+  tm_table_id: 1
+
+two:
+  column_number: 1
+  column_name: MyString
+  column_name_jp: MyString
+  column_type: MyString
+  column_size: MyString
+  column_null: false
+  column_default: MyString
+  column_p_key: false
+  column_f_key: false
+  note: MyText
+  tm_table_id: 1

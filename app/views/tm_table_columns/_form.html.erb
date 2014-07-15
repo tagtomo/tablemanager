@@ -1,0 +1,61 @@
+<%= form_for(@tm_table_column) do |f| %>
+  <% if @tm_table_column.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tm_table_column.errors.count, "error") %> prohibited this tm_table_column from being saved:</h2>
+
+      <ul>
+      <% @tm_table_column.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :column_number %><br>
+    <%= f.number_field :column_number %>
+  </div>
+  <div class="field">
+    <%= f.label :column_name %><br>
+    <%= f.text_field :column_name %>
+  </div>
+  <div class="field">
+    <%= f.label :column_name_jp %><br>
+    <%= f.text_field :column_name_jp %>
+  </div>
+  <div class="field">
+    <%= f.label :column_type %><br>
+    <%= f.text_field :column_type %>
+  </div>
+  <div class="field">
+    <%= f.label :column_size %><br>
+    <%= f.text_field :column_size %>
+  </div>
+  <div class="field">
+    <%= f.label :column_null %><br>
+    <%= f.check_box :column_null %>
+  </div>
+  <div class="field">
+    <%= f.label :column_default %><br>
+    <%= f.text_field :column_default %>
+  </div>
+  <div class="field">
+    <%= f.label :column_p_key %><br>
+    <%= f.check_box :column_p_key %>
+  </div>
+  <div class="field">
+    <%= f.label :column_f_key %><br>
+    <%= f.check_box :column_f_key %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :tm_table_id %><br>
+    <%= f.number_field :tm_table_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

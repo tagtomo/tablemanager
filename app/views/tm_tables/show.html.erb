@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project name:</strong>
+  <%= @tm_table.project_name %>
+</p>
+
+<p>
+  <strong>Table name:</strong>
+  <%= @tm_table.table_name %>
+</p>
+
+<p>
+  <strong>Table name jp:</strong>
+  <%= @tm_table.table_name_jp %>
+</p>
+
+<p>
+  <strong>Revision number:</strong>
+  <%= @tm_table.revision_number %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @tm_table.note %>
+</p>
+
+<p>
+  <h2>columns</h2>
+  <table>
+    <tr>
+      <th><%= :column_number %></th>
+      <th><%= :column_name %></th>
+      <th><%= :column_name_jp %></th>
+      <th><%= :column_type %></th>
+      <th><%= :column_size %></th>
+      <th><%= :column_null %></th>
+      <th><%= :column_default %></th>
+      <th><%= :column_p_key %></th>
+      <th><%= :column_f_key %></th>
+      <th><%= :note %></th>
+    </tr>
+    <% if @tm_table %>
+      <% @tm_table.tm_table_columns.each do |rec| %>
+        <tr>
+          <td><%= rec.column_number %></td>
+          <td><%= rec.column_name %></td>
+          <td><%= rec.column_name_jp %></td>
+          <td><%= rec.column_type %></td>
+          <td><%= rec.column_size %></td>
+          <td><%= rec.column_null %></td>
+          <td><%= rec.column_default %></td>
+          <td><%= rec.column_p_key %></td>
+          <td><%= rec.column_f_key %></td>
+          <td><%= rec.note %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</p>
+
+<%= hidden_field :tm_table, :table_name %>
+
+
+<%= link_to 'Edit', edit_tm_table_path(@tm_table) %> |
+<%= link_to 'Back', tm_tables_path %>
