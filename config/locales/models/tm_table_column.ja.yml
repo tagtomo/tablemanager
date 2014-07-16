@@ -1,12 +1,7 @@
-# モデル名
 ja:
   activerecord:
     models:
-      tm_table_column: 製品
-
-# モデルの属性名
-ja:
-  activerecord:
+      tm_table_column: 項目
     attributes:
       tm_table_column:
         column_number: 連番

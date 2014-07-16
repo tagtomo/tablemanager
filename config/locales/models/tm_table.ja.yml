@@ -1,12 +1,7 @@
-# モデル名
 ja:
   activerecord:
     models:
-      tm_table: 製品
-
-# モデルの属性名
-ja:
-  activerecord:
+      tm_table: テーブル
     attributes:
       tm_table:
         project_name: ＰＪ名

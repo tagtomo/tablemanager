@@ -23,7 +23,7 @@ jQuery ->
         $('.detail').eq(select_num).removeClass("selected")
       else
         $('.detail').eq(select_num).addClass("selected")
-      event.preventDefault()
+      #event.preventDefault()
 
   #行削除
   $(document)
@@ -32,8 +32,9 @@ jQuery ->
       if $('.selected').length == 0
         alert "明細が未選択です。"
         return
-      $(".selected" ).children("input[name*='_destroy']").val('1')
-      $('.selected').closest('fieldset').hide()
+      console.log($('.selected > td').children("input[name*='_destroy']"))
+      $('.selected > td').children("input[name*='_destroy']").val('1')
+      $('.selected').closest('tr').hide()
       $.update_index()  #index編集
       event.preventDefault()
 
@@ -44,7 +45,7 @@ jQuery ->
       regexp = new RegExp($(this).data('id'), 'g')
       console.log($('.detail').length)
       if $('.detail').length == 0
-        $('.field').last().after($(this).data('fields').replace(regexp, time))
+        $('.detail_label').after($(this).data('fields').replace(regexp, time))
       else
         $('.detail').last().after($(this).data('fields').replace(regexp, time))
       $.update_index()  #index編集

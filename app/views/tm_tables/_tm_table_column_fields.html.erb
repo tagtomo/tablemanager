@@ -1,20 +1,18 @@
-<fieldset class="detail">
-  <table>
-    <td><%= f.hidden_field :id %></td>
-    <td>
-      <div class="detail_no">
-        <%= f.number_field :column_number ,disabled: "true" %>
-      </div>
-    </td>
-    <td><%= f.text_field :column_name %></td>
-    <td><%= f.text_field :column_name_jp %></td>
-    <td><%= f.text_field :column_type %></td>
-    <td><%= f.text_field :column_size %></td>
-    <td><%= f.check_box :column_null %></td>
-    <td><%= f.text_field :column_default %></td>
-    <td><%= f.check_box :column_p_key %></td>
-    <td><%= f.check_box :column_f_key %></td>
-    <td><%= f.text_area :note %></td>
-    <td><%= f.hidden_field :_destroy %></td>
-  </table>
-</fieldset>
+ <tr  class="detail">
+  <%= f.hidden_field :id %>
+  <td >
+    <div class="detail_no">
+      <%= f.number_field :column_number %>
+    </div>
+  </td>
+  <td><%= f.text_field :column_name  %></td>
+  <td><%= f.text_field :column_name_jp %></td>
+  <td><%= f.text_field :column_type %></td>
+  <td><%= f.text_field :column_size %></td>
+  <td><%= f.check_box :column_null %></td>
+  <td><%= f.text_field :column_default %></td>
+  <td><%= f.check_box :column_p_key %></td>
+  <td><%= f.check_box :column_f_key %></td>
+  <td><%= f.text_area :note %></td>
+  <%= f.hidden_field :_destroy %>
+</tr>
