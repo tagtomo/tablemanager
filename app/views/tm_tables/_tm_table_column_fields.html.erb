@@ -2,13 +2,13 @@
   <%= f.hidden_field :id %>
   <td >
     <div class="detail_no">
-      <%= f.number_field :column_number %>
+      <%= f.text_field :column_number , class: "col-xs-4" %>
     </div>
   </td>
   <td><%= f.text_field :column_name  %></td>
   <td><%= f.text_field :column_name_jp %></td>
-  <td><%= f.text_field :column_type %></td>
-  <td><%= f.text_field :column_size %></td>
+  <td><%= f.text_field :column_type , class: "col-xs-6"%></td>
+  <td><%= f.text_field :column_size , class: "col-xs-4"%></td>
   <td><%= f.check_box :column_null %></td>
   <td><%= f.text_field :column_default %></td>
   <td><%= f.check_box :column_p_key %></td>

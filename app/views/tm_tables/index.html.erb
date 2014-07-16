@@ -20,9 +20,9 @@
         <td><%= tm_table.table_name_jp %></td>
         <td><%= tm_table.revision_number %></td>
         <td><%= tm_table.note %></td>
-        <td><%= link_to 'Show', tm_table , class: "btn btn-mini btn-default"%>
-        <%= link_to 'Edit', edit_tm_table_path(tm_table) , class: "btn btn-mini btn-default"%>
-        <%= link_to 'Destroy', tm_table, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-mini btn-danger"%></td>
+        <td><%= link_to 'Show', tm_table , class: "btn btn-xs btn-default"%>
+        <%= link_to 'Edit', edit_tm_table_path(tm_table) , class: "btn btn-xs btn-default"%>
+        <%= link_to 'Destroy', tm_table, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-xs btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New '+ t('activerecord.models.tm_table'), new_tm_table_path , class: "btn btn-mini btn-default"%>
+<%= link_to 'New '+ t('activerecord.models.tm_table'), new_tm_table_path , class: "btn btn-xs btn-default"%>
