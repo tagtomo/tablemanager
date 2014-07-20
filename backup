@@ -1,0 +1,321 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: tablemanager; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO tablemanager;
+
+--
+-- Name: tm_table_columns; Type: TABLE; Schema: public; Owner: tablemanager; Tablespace: 
+--
+
+CREATE TABLE tm_table_columns (
+    id integer NOT NULL,
+    column_number integer,
+    column_name character varying(255),
+    column_name_jp character varying(255),
+    column_type character varying(255),
+    column_size character varying(255),
+    column_null boolean,
+    column_default character varying(255),
+    column_p_key boolean,
+    column_f_key boolean,
+    note text,
+    tm_table_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.tm_table_columns OWNER TO tablemanager;
+
+--
+-- Name: tm_table_columns_id_seq; Type: SEQUENCE; Schema: public; Owner: tablemanager
+--
+
+CREATE SEQUENCE tm_table_columns_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tm_table_columns_id_seq OWNER TO tablemanager;
+
+--
+-- Name: tm_table_columns_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tablemanager
+--
+
+ALTER SEQUENCE tm_table_columns_id_seq OWNED BY tm_table_columns.id;
+
+
+--
+-- Name: tm_tables; Type: TABLE; Schema: public; Owner: tablemanager; Tablespace: 
+--
+
+CREATE TABLE tm_tables (
+    id integer NOT NULL,
+    project_name character varying(255),
+    table_name character varying(255),
+    table_name_jp character varying(255),
+    revision_number character varying(255),
+    note text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.tm_tables OWNER TO tablemanager;
+
+--
+-- Name: tm_tables_id_seq; Type: SEQUENCE; Schema: public; Owner: tablemanager
+--
+
+CREATE SEQUENCE tm_tables_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tm_tables_id_seq OWNER TO tablemanager;
+
+--
+-- Name: tm_tables_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tablemanager
+--
+
+ALTER SEQUENCE tm_tables_id_seq OWNED BY tm_tables.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: tablemanager
+--
+
+ALTER TABLE ONLY tm_table_columns ALTER COLUMN id SET DEFAULT nextval('tm_table_columns_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: tablemanager
+--
+
+ALTER TABLE ONLY tm_tables ALTER COLUMN id SET DEFAULT nextval('tm_tables_id_seq'::regclass);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: tablemanager
+--
+
+COPY schema_migrations (version) FROM stdin;
+20140714090527
+20140714090536
+\.
+
+
+--
+-- Data for Name: tm_table_columns; Type: TABLE DATA; Schema: public; Owner: tablemanager
+--
+
+COPY tm_table_columns (id, column_number, column_name, column_name_jp, column_type, column_size, column_null, column_default, column_p_key, column_f_key, note, tm_table_id, created_at, updated_at) FROM stdin;
+11	2	corporate_id	本店ＩＤ	integer		f		f	f		2	2014-07-15 06:37:06.418559	2014-07-17 00:29:15.263646
+6	1	number	識別番号	string		t		f	f		1	2014-07-15 06:24:28.396827	2014-07-16 01:44:38.678204
+9	1	number	識別番号	string		t		f	f		2	2014-07-15 06:31:14.767568	2014-07-16 01:44:57.831687
+13	2	table_name	テーブル名	string		f		f	f		3	2014-07-16 04:14:03.644042	2014-07-16 04:14:03.644042
+14	3	table_name_jp	日本語テーブル名	string		f		f	f		3	2014-07-16 04:14:03.645606	2014-07-16 04:14:03.645606
+15	4	revision_number	リビジョン	string		f		f	f		3	2014-07-16 04:14:03.648318	2014-07-16 04:14:03.648318
+16	6	note	備考	string		f		f	f		3	2014-07-16 04:14:03.64968	2014-07-16 04:14:11.351923
+18	1	col_number	連番	integer		t		f	f		4	2014-07-16 04:24:37.657967	2014-07-16 04:24:37.657967
+19	2	col_name	項目名	string		f		f	f		4	2014-07-16 04:24:37.660208	2014-07-16 04:24:37.660208
+20	3	col_name_jp	日本語項目名	string		f		f	f		4	2014-07-16 04:24:37.661549	2014-07-16 04:24:37.661549
+21	4	col_type	型	string		f		f	f		4	2014-07-16 04:24:37.663471	2014-07-16 04:24:37.663471
+22	5	col_size	サイズ	string		f		f	f		4	2014-07-16 04:24:37.664563	2014-07-16 04:24:37.664563
+23	6	col_null	Ｎｕｌｌ制約	boolean		f		f	f		4	2014-07-16 04:24:37.666268	2014-07-16 04:24:37.666268
+24	7	col_default	規定値	string		f		f	f		4	2014-07-16 04:24:37.667616	2014-07-16 04:24:37.667616
+25	8	col_pkey	主キー	boolean		f		f	f		4	2014-07-16 04:24:37.669469	2014-07-16 04:24:37.669469
+26	9	col_fkey1	ＦＫ１	boolean		f		f	f		4	2014-07-16 04:24:37.670704	2014-07-16 04:24:37.670704
+27	10	col_fkey2	ＦＫ２	boolean		f		f	f		4	2014-07-16 04:24:37.67211	2014-07-16 04:24:37.67211
+28	11	col_fkey3	ＦＫ３	boolean		f		f	f		4	2014-07-16 04:24:37.67346	2014-07-16 04:24:37.67346
+29	12	note	備考	text		f		f	f		4	2014-07-16 04:24:37.674851	2014-07-16 04:24:37.674851
+30	13	bmtable_id	親テーブルＩＤ	integer		t		f	f		4	2014-07-16 04:24:37.676858	2014-07-16 04:24:37.676858
+12	1	project_name	プロジェクト名	string		t		f	f	対象プロジェクト	3	2014-07-16 04:14:03.641797	2014-07-16 04:26:36.117879
+17	5	database_product	対象DB	string		f		f	f	PostgreSQL\r\nOracle\r\nMySQL	3	2014-07-16 04:14:03.651175	2014-07-16 04:26:36.120291
+31	1	project_name	プロジェクト名	string		t		f	f		5	2014-07-16 04:48:45.25753	2014-07-16 04:48:45.25753
+32	2	code_kind	コード種類	string		t		f	f		5	2014-07-16 04:48:45.259946	2014-07-16 04:48:45.259946
+33	3	code_name_jp	コード種類名称	string		f		f	f		5	2014-07-16 04:48:45.26191	2014-07-16 04:48:45.26191
+34	4	revision_number	リビジョン	string		f		f	f		5	2014-07-16 04:48:45.264081	2014-07-16 04:48:45.264081
+35	1	code	コード番号	string		t		f	f		6	2014-07-16 04:52:57.967853	2014-07-16 04:52:57.967853
+36	2	official_name	正式名称	string		f		f	f		6	2014-07-16 04:52:57.969785	2014-07-16 04:52:57.969785
+37	3	short_name1	略称１	string		f		f	f		6	2014-07-16 04:52:57.971379	2014-07-16 04:52:57.971379
+38	4	short_name2	略称２	string		f		f	f		6	2014-07-16 04:52:57.972823	2014-07-16 04:52:57.972823
+39	2	old_id	変更前ID	integer		f		f	f		1	2014-07-17 00:07:29.901217	2014-07-17 00:07:54.261746
+7	3	name	名称	string		f		f	f	法人名称	1	2014-07-15 06:24:28.40012	2014-07-17 00:07:54.263647
+40	4	name_k	名称カナ	string		f		f	f		1	2014-07-17 00:07:29.90303	2014-07-17 00:07:54.264724
+41	5	zipno	郵便番号	string		f		f	f		1	2014-07-17 00:07:29.907292	2014-07-17 00:08:18.986693
+8	6	address	所在地	string		f		f	f		1	2014-07-15 06:25:17.849043	2014-07-17 00:08:18.988016
+42	7	address_kata	所在地方書	string		f		f	f		1	2014-07-17 00:11:59.223929	2014-07-17 00:11:59.223929
+43	8	legal_personality_cd	法人格区分	string		f		f	f		1	2014-07-17 00:11:59.225736	2014-07-17 00:11:59.225736
+44	9	legal_personality_position_cd	法人格位置区分	string		f		f	f		1	2014-07-17 00:11:59.227121	2014-07-17 00:11:59.227121
+45	10	representative_name	代表者氏名	string		f		f	f		1	2014-07-17 00:11:59.228903	2014-07-17 00:11:59.228903
+46	11	representative_phone_number	電話番号	string		f		f	f		1	2014-07-17 00:11:59.230125	2014-07-17 00:11:59.230125
+47	12	organization_date	設立年月日	date		f		f	f		1	2014-07-17 00:11:59.231758	2014-07-17 00:11:59.231758
+48	13	organization_register_date	設立登記年月日	date		f		f	f		1	2014-07-17 00:11:59.233825	2014-07-17 00:11:59.233825
+49	14	dissolution_register_date	解散登記年月日	date		f		f	f		1	2014-07-17 00:17:33.133445	2014-07-17 00:17:33.133445
+50	15	dissolution_date	解散年月日	date		f		f	f		1	2014-07-17 00:17:33.135003	2014-07-17 00:17:33.135003
+51	16	liquidate_date	精算結了年月日	date		f		f	f		1	2014-07-17 00:17:33.136205	2014-07-17 00:17:33.136205
+52	17	establish_date	開設年月日	date		f		f	f		1	2014-07-17 00:17:33.137593	2014-07-17 00:17:33.137593
+53	18	closure_date	閉鎖年月日	date		f		f	f		1	2014-07-17 00:17:33.138778	2014-07-17 00:17:33.138778
+54	19	start_date	開始年月日	date		f		f	f		1	2014-07-17 00:17:33.139836	2014-07-17 00:17:33.139836
+55	20	pause_date	休止年月日	date		f		f	f		1	2014-07-17 00:17:33.140835	2014-07-17 00:17:33.140835
+56	21	resume_date	再開年月日	date		f		f	f		1	2014-07-17 00:17:33.14233	2014-07-17 00:17:33.14233
+57	22	abolish_date	廃止年月日	date		f		f	f		1	2014-07-17 00:17:33.143042	2014-07-17 00:17:33.143042
+58	23	start_check_date	開始確認年月日	date		f		f	f		1	2014-07-17 00:17:33.145017	2014-07-17 00:17:33.145017
+59	24	abolish_check_date	廃止確認年月日	date		f		f	f		1	2014-07-17 00:17:33.146294	2014-07-17 00:17:33.146294
+60	25	reference_number	法人整理番号	string		f		f	f		1	2014-07-17 00:17:33.148069	2014-07-17 00:17:33.148069
+61	26	state_number	都道府県法人番号	string		f		f	f		1	2014-07-17 00:17:33.150078	2014-07-17 00:17:33.150078
+62	27	country_number	国税法人番号	string		f		f	f		1	2014-07-17 00:17:33.151134	2014-07-17 00:17:33.151134
+63	28	nouzeiid	納税者ID	string		f		f	f		1	2014-07-17 00:17:33.1529	2014-07-17 00:17:33.1529
+64	3	old_id	変更前ID	integer		f		f	f		2	2014-07-17 00:22:26.370797	2014-07-17 00:28:53.33377
+65	4	branch_no	支店連番	integer		f		f	f		2	2014-07-17 00:22:26.372257	2014-07-17 00:28:53.334543
+66	5	name	支店名称	string		f		f	f		2	2014-07-17 00:22:26.374851	2014-07-17 00:28:53.335281
+67	6	name_k	支店名称カナ	string		f		f	f		2	2014-07-17 00:22:26.376149	2014-07-17 00:28:53.341033
+68	7	zipno	郵便番号	string		f		f	f		2	2014-07-17 00:22:26.377546	2014-07-17 00:28:53.342641
+69	8	address	支店所在地	string		f		f	f		2	2014-07-17 00:22:26.380332	2014-07-17 00:28:53.343637
+70	9	address_kata	支店所在地方書	string		f		f	f		2	2014-07-17 00:22:26.387276	2014-07-17 00:28:53.344721
+71	10	installation_date	設置年月日	date		f		f	f		2	2014-07-17 00:22:26.38857	2014-07-17 00:28:53.345677
+72	11	abolish_date	廃止年月日	date		f		f	f		2	2014-07-17 00:22:26.39039	2014-07-17 00:28:53.346718
+73	1	number	識別番号	string		t		f	f		7	2014-07-17 00:44:49.717638	2014-07-17 00:44:49.717638
+74	2	name	名称	string		f		f	f		7	2014-07-17 00:44:49.718998	2014-07-17 00:44:49.718998
+75	3	name_k	名称カナ	string		f		f	f		7	2014-07-17 00:44:49.72116	2014-07-17 00:44:49.72116
+76	4	zipno	郵便番号	string		f		f	f		7	2014-07-17 00:44:49.72364	2014-07-17 00:44:49.72364
+77	5	address	住所	string		f		f	f		7	2014-07-17 00:44:49.725856	2014-07-17 00:44:49.725856
+78	6	address_kata	所在地方書	string		f		f	f		7	2014-07-17 00:44:49.728016	2014-07-17 00:44:49.728016
+79	7	nouzeiid	納税者ID	string		f		f	f		7	2014-07-17 00:44:49.729301	2014-07-17 00:45:16.858077
+81	2	title	題名	string		f		f	f		8	2014-07-17 00:47:50.711146	2014-07-17 00:47:50.711146
+82	3	content	内容	string		f		f	f		8	2014-07-17 00:47:50.714821	2014-07-17 00:47:50.714821
+80	1	number	識別番号	string		t		f	f		8	2014-07-17 00:47:50.7097	2014-07-17 00:48:00.628988
+83	1	number	識別番号	string		f		f	f		9	2014-07-17 00:48:42.361173	2014-07-17 00:51:21.073295
+84	2	type	種別	string		f		f	f	管理対象に対し複数保持する場合の区分	9	2014-07-17 00:51:21.075055	2014-07-17 00:51:21.075055
+85	3	name	名称	string		f		f	f		9	2014-07-17 00:51:21.0762	2014-07-17 00:51:21.0762
+86	4	zipno	郵便番号	string		f		f	f		9	2014-07-17 00:51:21.082014	2014-07-17 00:51:21.082014
+87	5	address	住所	string		f		f	f		9	2014-07-17 00:51:21.083181	2014-07-17 00:51:21.083181
+88	6	address_kata	所在地方書	string		f		f	f		9	2014-07-17 00:51:21.084387	2014-07-17 00:51:21.084387
+89	7	start_date	有効期間S	date		f		f	f		9	2014-07-17 00:51:21.086159	2014-07-17 00:51:21.086159
+90	8	end_date	有効期間E	date		f		f	f		9	2014-07-17 00:51:21.087914	2014-07-17 00:51:21.087914
+91	1	number	識別番号	string		f		f	f		10	2014-07-17 01:09:19.765403	2014-07-17 01:11:14.495086
+95	2	old_id	変更前ID	integer		f		f	f		10	2014-07-17 01:11:14.49822	2014-07-17 01:11:14.49822
+96	3	ido_date	異動日	date		f		f	f		10	2014-07-17 01:11:14.503326	2014-07-17 01:11:14.503326
+97	4	ido_jiyu	異動事由	date		f		f	f		10	2014-07-17 01:11:14.507223	2014-07-17 01:11:14.507223
+98	1	number	識別番号	string		f		f	f		11	2014-07-17 01:17:02.53021	2014-07-17 01:17:02.53021
+99	2	kznendotuki	課税年度月	string		f		f	f		11	2014-07-17 01:17:02.533519	2014-07-17 01:17:02.533519
+100	3	old_id	変更前ID	integer		f		f	f		11	2014-07-17 01:17:02.53663	2014-07-17 01:17:02.53663
+101	4	shinkoku_kbn	申告区分	string		f		f	f		11	2014-07-17 01:17:02.538647	2014-07-17 01:17:02.538647
+102	5	zeigaku	税額	string		f		f	f		11	2014-07-17 01:17:02.540197	2014-07-17 01:17:02.540197
+\.
+
+
+--
+-- Name: tm_table_columns_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tablemanager
+--
+
+SELECT pg_catalog.setval('tm_table_columns_id_seq', 102, true);
+
+
+--
+-- Data for Name: tm_tables; Type: TABLE DATA; Schema: public; Owner: tablemanager
+--
+
+COPY tm_tables (id, project_name, table_name, table_name_jp, revision_number, note, created_at, updated_at) FROM stdin;
+4	basemanager	bmtable_col	項目	0.0.1		2014-07-16 04:24:37.656384	2014-07-16 04:24:37.656384
+5	basemanager	bmcode	コード定義	0.0.1		2014-07-16 04:48:45.255524	2014-07-16 04:48:45.255524
+6	basemanager	bmcode_detail	コード詳細	0.0.1		2014-07-16 04:52:57.966105	2014-07-16 04:52:57.966105
+3	basemanager	bmtable	テーブル定義	0.0.1		2014-07-16 04:14:03.618773	2014-07-16 05:10:10.076204
+1	beetle	corporate	法人	0.0.1		2014-07-14 09:14:52.206	2014-07-17 00:18:55.524895
+2	beetle	corporate_branch	法人支店	0.0.1		2014-07-15 06:31:14.744221	2014-07-17 00:22:26.368869
+7	beetle	individual	個人	0.0.1		2014-07-17 00:44:49.711986	2014-07-17 00:44:49.711986
+8	beetle	memo	メモ	0.0.1		2014-07-17 00:47:50.707105	2014-07-17 00:47:50.707105
+9	beetle	addressee	送付先	0.0.1		2014-07-17 00:48:42.357306	2014-07-17 00:48:42.357306
+10	beetle	bg_kihon	たばこ基本台帳	0.0.1		2014-07-17 01:09:19.763079	2014-07-17 01:11:40.537351
+11	beetle	bg_kazei	たばこ課税台帳	0.0.1		2014-07-17 01:17:02.526857	2014-07-17 01:17:19.604609
+\.
+
+
+--
+-- Name: tm_tables_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tablemanager
+--
+
+SELECT pg_catalog.setval('tm_tables_id_seq', 11, true);
+
+
+--
+-- Name: tm_table_columns_pkey; Type: CONSTRAINT; Schema: public; Owner: tablemanager; Tablespace: 
+--
+
+ALTER TABLE ONLY tm_table_columns
+    ADD CONSTRAINT tm_table_columns_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tm_tables_pkey; Type: CONSTRAINT; Schema: public; Owner: tablemanager; Tablespace: 
+--
+
+ALTER TABLE ONLY tm_tables
+    ADD CONSTRAINT tm_tables_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: tablemanager; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

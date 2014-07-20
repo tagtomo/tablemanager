@@ -63,3 +63,9 @@
 
 <%= link_to 'Edit', edit_tm_table_path(@tm_table) , class: "btn btn-xs btn-default"%> |
 <%= link_to 'Back', tm_tables_path , class: "btn btn-xs btn-default"%>
+<%= button_tag 'gen', class: "getgentext btn btn-xs btn-default"%>
+<%= button_tag 'localeyml', class: "getlocaleyml btn btn-xs btn-default"%>
+
+<div id='disp'>
+  <pre id='targetpre'><code id='targetcode'></code></pre>
+</div>

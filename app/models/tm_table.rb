@@ -14,8 +14,20 @@ class TmTable < ActiveRecord::Base
   	  	column_type = tm_table_column[:column_type]
   	  end
   	  sfdata << " " + tm_table_column[:column_name] + ":" + column_type
-      p sfdata
   	end
-  	p sfdata
+  	return sfdata
+  end
+  def to_localeyml
+    yml = "ja:\n"
+    yml << "  activerecord:\n"
+    yml << "    models:\n"
+    yml << "      " + self[:table_name] + ": " + self[:table_name_jp] +"\n"
+    yml << "  attributes:\n"
+    yml << "    models:\n"
+    yml << "      " + self[:table_name] + ":\n"
+    self.tm_table_columns.each do |tm_table_column|
+      yml << "        " + tm_table_column[:column_name] + ": " + tm_table_column[:column_name_jp] + "\n"
+    end
+    return yml
   end
 end

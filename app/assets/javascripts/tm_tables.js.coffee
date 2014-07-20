@@ -1,19 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-#  $('form').on 'click', '.remove_fields', (event) ->
-#    $(this).prev('input[type=hidden]').val('1')
-#    $(this).closest('fieldset').hide()
-#    event.preventDefault()
-
-#  $('form').on 'click', '.aadd_fields', (event) ->
-#    console.log($(".detail_no").size() + 1)
-#    time = new Date().getTime()
-#    regexp = new RegExp($(this).data('id'), 'g')
-#    $(this).before($(this).data('fields').replace(regexp, time))
-#    event.preventDefault()
-
   #行選択
   $(document)
     .on "click" ,".detail",  (event)->
@@ -32,9 +17,11 @@ jQuery ->
       if $('.selected').length == 0
         alert "明細が未選択です。"
         return
-      console.log($('.selected > td').children("input[name*='_destroy']"))
-      $('.selected > td').children("input[name*='_destroy']").val('1')
+      #console.log($('.selected').children("input[name*='_destroy']"))
+      $('.selected').children("input[name*='_destroy']").val('1')
       $('.selected').closest('tr').hide()
+      $('.selected').addClass("deleted")
+      $('.selected').removeClass("selected") #削除明細は選択を解除
       $.update_index()  #index編集
       event.preventDefault()
 
@@ -94,3 +81,36 @@ jQuery ->
       display_idx += 1
       #console.log($(this).find('.detail_no').children().val())
       $(this).find('.detail_no').children().val(display_idx)
+
+  #scaffold用gendata取得
+  $(document)
+    .on "click",".getgentext" ,   (event)->
+      url = location.href　+'/getgentext'
+      #console.log(url)
+      console.log($("pre#targetpre").html())
+      console.log($("code#targetcode").text())
+      #Restcall
+      $.ajax(
+        url: url,
+        type: 'get',
+        async: false,
+        success: (text) ->
+          $("code#targetcode").text(text)
+        error: (XMLHttpRequest, textStatus, errorThrown) ->
+          alert(XMLHttpRequest + " " + textStatus)
+      )
+  #locale用yml取得
+  $(document)
+    .on "click",".getlocaleyml" ,   (event)->
+      url = location.href　+'/getlocaleyml'
+      #console.log(url)
+      #Restcall
+      $.ajax(
+        url: url,
+        type: 'get',
+        async: false,
+        success: (text) ->
+          $("code#targetcode").text(text)
+        error: (XMLHttpRequest, textStatus, errorThrown) ->
+          alert(XMLHttpRequest + " " + textStatus)
+      )

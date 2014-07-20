@@ -63,6 +63,17 @@ class TmTablesController < ApplicationController
     end
   end
 
+  def getgentext
+      gentext = TmTable.find(params[:id]).to_gentext
+      render :text =>  gentext
+  end
+
+  def getlocaleyml
+      localeyml = TmTable.find(params[:id]).to_localeyml
+      puts localeyml
+      render :text =>  localeyml
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tm_table

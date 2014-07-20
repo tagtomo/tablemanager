@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :tm_table_columns
 
-  resources :tm_tables
+  resources :tm_tables do
+    member do
+      get 'getgentext'
+      get 'getlocaleyml'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
