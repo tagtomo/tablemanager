@@ -22,8 +22,7 @@ class TmTable < ActiveRecord::Base
     yml << "  activerecord:\n"
     yml << "    models:\n"
     yml << "      " + self[:table_name] + ": " + self[:table_name_jp] +"\n"
-    yml << "  attributes:\n"
-    yml << "    models:\n"
+    yml << "    attributes:\n"
     yml << "      " + self[:table_name] + ":\n"
     self.tm_table_columns.each do |tm_table_column|
       yml << "        " + tm_table_column[:column_name] + ": " + tm_table_column[:column_name_jp] + "\n"
